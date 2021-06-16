@@ -1,0 +1,15 @@
+#mainBlock{
+    background-color:var(--mainPageBackGroundColor);
+}
+#navbarstyling{
+    background-image: linear-gradient(to right, var(--navBackgroundStartColor), var(--navBackgroundEndColor));
+}
+.nav-link{
+    color: var(--navbarLinksColor);
+    font-weight: bold;
+    margin-left: 25px;
+}
+.navbar-brand{
+    font-weight: bold;
+    color: var(--navbarBrandColor);
+}

@@ -1,0 +1,72 @@
+/* #mainTopDiv{
+    margin: 0px;
+    margin-top: 5%;
+    padding: 0px;
+} */
+.questionCards{
+    margin: 3%;
+    border: 1px solid goldenrod;
+    border-radius: 35px;
+     padding-top: 1%;
+     padding-bottom: 1%;
+    overflow: hidden;
+}
+.questions{
+    height: 7vh;
+    margin-left:3.5%; 
+    margin-right: 3.5%;
+    overflow: hidden;
+    text-align: justify;
+    text-justify: inter-word;
+    /* border:1px solid black; */
+}
+.icons{
+    margin-left: 15px;
+    margin-top: 5%;
+}
+
+/* answer/comment section */
+.answerCards{
+    margin: 3%;
+    border: 1px solid goldenrod;
+    border-radius: 35px;
+     padding-top: 3%;
+     padding-bottom: 3%;
+}
+.answers{
+    height: 7vh;
+    margin-left:3.5%; 
+    margin-right: 3.5%;
+    overflow: hidden;
+    text-align: justify;
+    text-justify: inter-word;
+    /* border:1px solid black; */
+}
+
+#textArea{
+    border: 1px solid gray;
+    border-radius: 25px;
+    width: 90%;
+    height:12vh;
+    padding:1.5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size:small;
+}
+#textArea:focus{
+    outline: none;
+}
+#postBtn{
+    margin-top: 3%;
+    margin-right:2%;
+}
+#titleTextArea{
+    border: 1px solid gray;
+    border-radius: 25px;
+    width: 90%;
+    height:8vh;
+    padding:1.5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size:small;
+}

@@ -1,0 +1,42 @@
+<div class='answers'> {{questionObject.title}} |||||| {{questionObject.questionId}}</div> 
+            <div class='answers'> {{questionObject.question}}</div>    
+            
+            <div style='display:inline-block;margin-left: 3.5%;border-top: 1px dashed blue;' class='iconsDiv'>
+                <i class="pi pi-eye" style='color: #007bff;'></i> &nbsp;&nbsp;{{questionObject.views}} &nbsp;&nbsp;&nbsp;
+                <i class="pi pi-chevron-up icons" style='color: #007bff;'></i>&nbsp;&nbsp;{{questionObject.upVotes}} &nbsp;&nbsp;&nbsp;
+                <i class="pi pi-chevron-down icons" style='color: #007bff;'></i>&nbsp;&nbsp;{{questionObject.downVotes}}   &nbsp;&nbsp;&nbsp;
+            </div>
+
+            <!-- Comments Table -->
+            
+            <div id='commentSection' style='margin-top: 6%;margin-left: 2%;margin-right: 2%;'>
+                <p-table #tab [value]="comments" dataKey="name" [autoLayout]="true" id='table1'
+              [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,25]" styleClass="p-datatable-data p-datatable-gridlines p-datatable-striped"
+              [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              >
+    
+              <ng-template pTemplate="header">
+                  <tr >
+                      <th>
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                            Comments &nbsp;&nbsp;&nbsp;
+                            <i class="pi pi-comments" style='color: red;'></i>
+                            <i class="pi pi-plus-circle" style='float:right' ></i>
+                          </div>
+                      </th>  
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-singlecomment>
+                  <tr>
+                      <td>
+                         <div> {{singlecomment.answer}} </div>
+                         <div style='display:inline-block;margin-top:2%;border-top: 1px dashed blue;' class='iconsDiv'>
+                            <i class="pi pi-thumbs-up" style='color: #007bff;' (click)='increaseVotes(singlecomment)' ></i>&nbsp;&nbsp;{{singlecomment.likes}} &nbsp;&nbsp;&nbsp;
+                            <i class="pi pi-thumbs-down icons" style='color: #007bff;'></i>&nbsp;&nbsp;{{singlecomment.dislikes}}   &nbsp;&nbsp;&nbsp;
+                            <i class="pi pi-check icons" style='color: rgb(3, 77, 3);font-size: 1.1em;font-weight:bolder'></i>
+                        </div>
+                      </td>
+                  </tr>
+              </ng-template>
+          </p-table>
+            </div>

@@ -1,0 +1,26 @@
+.container-fluid{
+    margin-top: 3%;
+    /* border:ridge; */
+    width:78vw;
+}
+#side-bar-button{
+    margin-top: 5%;
+    margin-left: 4%;
+}
+#cardMid{
+    margin-top: 5%;
+}
+.buttonCls{
+    margin-top: 6%;
+    width:90%;
+    background-color: var(--buttonColor);
+}
+#tableHeading{
+    color: var(--tableHeading);
+    text-align: center;
+    font-size: 3.5em;
+}
+#nameAsALink{
+    text-decoration: none;
+    color:inherit;
+}

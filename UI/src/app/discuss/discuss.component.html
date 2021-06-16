@@ -1,0 +1,97 @@
+
+<div style='display: inline-block;' id='mainTopDiv'>
+            <h1 style='text-align: center;margin-top: 3%;'>DISCUSS</h1>
+<div style='width:74vw ;border: ridge;margin-top: 3%;float:left'>
+
+    <div *ngIf='showMainPage'>
+
+    <button class='btn btn-md btn-primary' style='margin-right: 10%;margin-left: 4%;margin-top:2%' (click)='addNewQuestion()'>New Query ?</button>   
+  
+    <div *ngIf='showNewQuestionInputField' style=' margin: 3%;'>
+        <textarea id='titleTextArea' style='border: 1px solid goldenrod;' [(ngModel)]='titleTextNewQuestion'></textarea> 
+        <textarea id='textArea' style='border: 1px solid goldenrod;height:25vh' [(ngModel)]='textAreaNewQuestion'></textarea> 
+        <button class='btn btn-md btn-success' style='float: right;' id='postBtn' (click)='postNewQuestion()'>Add</button>
+      </div>
+
+    <div class='questionCards' *ngFor='let ques of recievedQuestions' (click)='expandCard(ques)'>
+        <div class='questions'> {{ques.title}} </div>    
+        
+        <div style='display:inline-block;margin-left: 3.5%;border-top: 1px dashed blue;' class='iconsDiv'>
+            <i class="pi pi-eye" style='color: #007bff;'></i> &nbsp;&nbsp;{{ques.views}} &nbsp;&nbsp;&nbsp;
+            <i class="pi pi-chevron-up icons" style='color: #007bff;'></i>&nbsp;&nbsp;{{ques.upVotes}} &nbsp;&nbsp;&nbsp;
+            <i class="pi pi-chevron-down icons" style='color: #007bff;'></i>&nbsp;&nbsp;{{ques.downVotes}}   &nbsp;&nbsp;&nbsp;
+        </div>
+        <p style='float: right;margin-right:5%'>{{ques.queryDate}}</p>
+    </div>
+    </div>  
+
+    <div *ngIf='!showMainPage'>
+        <i class="pi pi-arrow-left icons" style='color: green;margin-top: 3%;margin-left:4%;font-size: 1.3rem;' (click)='backToQuestionsList()'></i>
+
+        <div class='answerCards'>
+           
+            <div class='answers'> {{questionObject.title}} |||||| {{questionObject.questionId}}</div> 
+            <div class='answers'> {{questionObject.question}}</div>    
+            
+            <div style='display:inline-block;margin-left: 3.5%;border-top: 1px dashed blue;' class='iconsDiv'>
+                <i class="pi pi-eye" style='color: #007bff;'></i> &nbsp;&nbsp;<span>{{questionObject.views}}</span> &nbsp;&nbsp;&nbsp;
+                <i class="pi pi-chevron-up icons" style='color: #007bff;' (click)='upVotes()'></i>&nbsp;&nbsp;<span>{{questionObject.upVotes}}</span> &nbsp;&nbsp;&nbsp;
+                <i class="pi pi-chevron-down icons" style='color: #007bff;' (click)='downVotes()'></i>&nbsp;&nbsp;<span>{{questionObject.downVotes}} </span>  &nbsp;&nbsp;&nbsp;
+            </div>
+
+            <!-- Comments Table -->
+            
+            <div id='commentSection' style='margin-top: 6%;margin-left: 2%;margin-right: 2%;'>
+                <p-table #tab [value]="comments" dataKey="name" [autoLayout]="true" id='table1'
+              [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,25]" styleClass="p-datatable-data p-datatable-gridlines p-datatable-striped"
+              [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              >
+    
+              <ng-template pTemplate="header">
+                  <tr >
+                      <th>
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                            Comments &nbsp;&nbsp;&nbsp;
+                            <i class="pi pi-comments" style='color: red;'></i>
+                            <i class="pi pi-plus-circle" style='float:right' (click)='addNewComment()'></i>
+                          </div>
+                      </th> 
+                  </tr>
+                        <div *ngIf='showNewCommentInputField'>
+                          <textarea id='textArea' style='float: left;' [(ngModel)]='textAreaNewComment'></textarea> 
+                          <button class='btn btn-md btn-success' style='float: right;' id='postBtn' (click)='postNewComment()'>Post</button>
+                        </div>
+              </ng-template>
+              <ng-template pTemplate="body" let-singlecomment>
+                  <tr>
+                      <td>
+                         <div> {{singlecomment.answer}} </div>
+                         <div style='display:inline-block;margin-top:2%;border-top: 1px dashed blue;' class='iconsDiv'>
+                            <i class="pi pi-thumbs-up" style='color: #007bff;' (click)='increaseVotes(singlecomment)' ></i>&nbsp;&nbsp;{{singlecomment.likes}} &nbsp;&nbsp;&nbsp;
+                            <i class="pi pi-thumbs-down icons" style='color: #007bff;' (click)='decreaseVotes(singlecomment)'></i>&nbsp;&nbsp;{{singlecomment.dislikes}}   &nbsp;&nbsp;&nbsp;
+                            <i class="pi pi-check icons" style='color: rgb(3, 77, 3);font-size: 1.1em;font-weight:bolder'></i>
+                        </div>
+                      </td>
+                  </tr>
+              </ng-template>
+          </p-table>
+            </div>
+
+
+
+        </div>
+        
+    </div>
+
+    
+</div>
+
+           
+<div style='width:24vw;height:80vh ;border: ridge;float: right;margin-top: 3%;'>
+    <div class='card' > Ads </div>
+</div>
+
+</div>
+
+
+

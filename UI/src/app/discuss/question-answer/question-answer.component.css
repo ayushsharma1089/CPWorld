@@ -1,0 +1,14 @@
+.answers{
+    height: 7vh;
+    margin-left:3.5%; 
+    margin-right: 3.5%;
+    overflow: hidden;
+    text-align: justify;
+    text-justify: inter-word;
+    /* border:1px solid black; */
+}
+
+.icons{
+    margin-left: 15px;
+    margin-top: 5%;
+}

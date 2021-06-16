@@ -1,0 +1,15 @@
+#heading{
+    margin-top: 2%;
+    text-align: center;
+    font-family:serif;
+    font-size:xx-large;
+    color:#009933;
+    text-decoration: underline;
+}
+
+.table{
+    background-color: 	 #ffbb99;
+    margin-top: 4%;
+    margin-left: 8%;
+    width:65vw;
+}

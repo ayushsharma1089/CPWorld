@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root{
+
+    /* HomeComponent  */
+        /* Navigation Bar */
+        --navbarLinksColor:#161748;
+        --navbarBrandColor:#161748;
+        --navBackgroundStartColor:#fceed1;
+        --navBackgroundEndColor:#e4decd;
+    
+        /* Main Page */
+        /* --mainPageBackGroundColor:#12344b; */
+        --mainPageBackGroundColor:white;
+    
+    /* ContestComponent  */
+        /* Sidebar */
+        --buttonColor:#fff5d7;
+
+        /* Table Heading */
+        --tableHeading:white;
+    
+}

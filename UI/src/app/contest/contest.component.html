@@ -1,0 +1,120 @@
+<div id='main-body'>
+
+    <div style="display:inline-flex">
+        <div style="width: 20vw;height: 100vh;" id='side-bar'>
+            <div id='side-bar-button' *ngIf='recievedData.length'>
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('Codeforces')">Codeforces </button><br>
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('LeetCode')">LeetCode </button><br>            
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('CodeChef')">CodeChef </button><br>            
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('HackerRank')">HackerRank</button><br>      
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('TopCoder')">TopCoder</button><br>      
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('HackerEarth')">HackerEarth</button><br>      
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('Google Kickstart')">Google Kickstart</button><br>      
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('Google Codejam')">Google Codejam</button><br>     
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('Toph')">Toph</button><br>
+            <button class='btn btn-lg buttonCls' (click)="movetoPlatform('At Coder')">At Coder</button><br><br>
+
+            </div>
+        </div> 
+
+    <div class="container-fluid" *ngIf='!show'>
+        
+        <h1 id='tableHeading'>We Make Good Shit</h1>
+       <!-- Data Table -->
+       
+        <!-- NgPrime Table Begins -->
+
+
+       <div class="card" id='cardMid'> 
+          <p-table #tab [value]="data" dataKey="name" [autoLayout]="true" id='table1'
+              [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-data p-datatable-gridlines p-datatable-striped"
+              [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [globalFilterFields]="['name','site','start_time','end_time']">
+              <ng-template pTemplate="caption" >
+                  <div style="display:inline-block;" >
+                  <div class="p-d-flex" style="float: left;">
+                      <span class="p-input-icon-left p-ml-auto">
+                          <i class="pi pi-search" *ngIf='!ip.value.length'></i>
+                          <input #ip pInputText type="text" (input)="filterTable($event,tab)" placeholder="      Search by name,platform,date" style="width:20vw;"/>
+                        </span>
+                  </div>
+                  <div style="margin-left:35vw;display:inline-block">
+                    <div style="float: left;margin-top: 2px;padding-top: 0px;">UpComing Contests</div>&nbsp;&nbsp;
+                    <div style="float: right;"><p-inputSwitch [(ngModel)]="checked" (onChange)="handleSwitchChange()"></p-inputSwitch></div>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr >
+                      <th pSortableColumn="name">
+                          <div class="p-d-flex p-jc-between p-ai-center">
+                            Contest Name <p-sortIcon field="name"></p-sortIcon>
+                          </div>
+                      </th> 
+                      <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Platform 
+                        </div>
+                     </th>  
+                     <th >
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Start Date 
+                        </div>
+                     </th>  
+                     <th>
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            End Date 
+                        </div>
+                     </th> 
+                     <th >
+                     </th>  
+                      
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-valu>
+                  <tr>
+                      <td>
+                        <a href="{{valu.url}}" target="_blank" id='nameAsALink'>
+                          {{valu.name}}
+                        </a>
+                      </td>
+                      <td>
+                          {{valu.site}}
+                       </td>
+                    <td>
+                        {{valu.start_time| date:'dd-MMM-yy, hh:mm a'}}
+                    </td>
+                    <td>
+                        {{valu.end_time| date:'dd-MMM-yy, hh:mm a'}}
+                        
+                    </td> 
+                    <td>
+                        <div style="display: inline-flex;">
+                        <a style='float: left;' href="{{'https://calendar.google.com/calendar/u/0/r/eventedit?dates='+valu.start_time.substr(0,4)+valu.start_time.substr(5,2)+valu.start_time.substr(8,5)+valu.start_time.substr(14,2)+valu.start_time.substr(17,2)+'Z/'+valu.end_time.substr(0,4)+valu.end_time.substr(5,2)+valu.end_time.substr(8,5)+valu.end_time.substr(14,2)+valu.end_time.substr(17,2)+'Z&text='+valu.name+'&location='+valu.site+'&sf=true'}}" target="_blank"><i class="pi pi-calendar-plus"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a style='float: right;' href="{{valu.url}}" target="_blank"><i class="pi pi-eye"></i></a>
+                        </div>
+                    </td> 
+
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+    
+    </div>
+
+        <!-- NgPrime Table Ended -->
+
+    
+
+      <div *ngIf='show' class="container-fluid">
+        <router-outlet></router-outlet> 
+       </div>
+     
+    </div>
+
+</div>
+
+
+<!-- Moving to other component on click of this function -->
+
